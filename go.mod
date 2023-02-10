@@ -1,3 +1,3 @@
-module github.com/SiMENhol/funtemps
+module funtemps
 
 go 1.19

@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-
-	"funtemps\conv"
+	"funtemps/conv"
+	"funtemps/funfacts"
 )
 
 // Definerer flag-variablene i hoved-"scope"
@@ -12,7 +12,7 @@ var fahr float64
 var cels float64
 var kelv float64
 var out string
-var funfacts string
+var funfact string
 var temp float64
 
 // Bruker init (som anbefalt i dokumentasjonen) for å sikre at flagvariablene
@@ -31,7 +31,7 @@ func init() {
 	flag.Float64Var(&cels, "C", 0.0, "temperatur i grader celsius")
 	flag.Float64Var(&kelv, "K", 0.0, "temperatur i kelvin")
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - farhenheit, K- Kelvin")
-	flag.StringVar(&funfacts, "funfacts", "sun", "\"fun-facts\" om sun - Solen, luna - Månen og terra - Jorden")
+	flag.StringVar(&funfact, "funfacts", "sun", "\"fun-facts\" om sun - Solen, luna - Månen og terra - Jorden")
 	// Du må selv definere flag-variabelen for -t flagget, som bestemmer
 	// hvilken temperaturskala skal brukes når funfacts skal vises
 	flag.Float64Var(&temp, "Temperatur", 0.0, "Temperatur ute")
@@ -39,7 +39,8 @@ func init() {
 }
 
 func main() {
-	fmt.Println(conv.KelvinToCelsius)
+	fmt.Println(conv.KelvinToCelsius(20))
+	fmt.Println(funfacts.GetFunFacts("sun"))
 	flag.Parse()
 
 	/*
@@ -66,7 +67,7 @@ func main() {
 	*/
 
 	// Her er noen eksempler du kan bruke i den manuelle testingen
-	fmt.Println(fahr, cels, kelv, out, funfacts, temp)
+	fmt.Println(fahr, cels, kelv, out, funfact, temp)
 
 	fmt.Println("len(flag.Args())", len(flag.Args()))
 	fmt.Println("flag.NFlag()", flag.NFlag())

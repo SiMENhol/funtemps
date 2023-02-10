@@ -24,15 +24,15 @@ func GetFunFacts(about string) []string {
 	//	return (funfacts.FunFacts).Sun
 	var funfact FunFacts
 	funfact.Sun = []string{"sol"}
-	return funfact.Sun
 
 	if about == "sun" {
 		return funfact.Sun
 	}
+	return nil
+}
 
-	type FunFacts struct {
-		Sun   []string
-		Luna  []string
-		Terra []string
-	}
+type FunFacts struct {
+	Sun   []string
+	Luna  []string
+	Terra []string
 }
