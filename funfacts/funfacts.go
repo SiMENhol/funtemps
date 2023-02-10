@@ -24,9 +24,17 @@ func GetFunFacts(about string) []string {
 	//	return (funfacts.FunFacts).Sun
 	var funfact FunFacts
 	funfact.Sun = []string{"sol"}
+	funfact.Luna = []string{"månen"}
+	funfact.Terra = []string{"jorda"}
 
 	if about == "sun" {
 		return funfact.Sun
+	}
+	if about == "luna" {
+		return funfact.Luna
+	}
+	if about == "terra" {
+		return funfact.Terra
 	}
 	return nil
 }

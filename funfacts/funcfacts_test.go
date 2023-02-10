@@ -19,7 +19,9 @@ func TestGetFunFacts(t *testing.T) {
 	}
 
 	tests := []test{ // Her må du legge inn korrekte testverdier
-		{input: "sun", want: []string{"sol"}}, //tests := []test{
+		{input: "sun", want: []string{"sol"}},
+		{input: "luna", want: []string{"månen"}},
+		{input: "terra", want: []string{"jorda"}}, //tests := []test{
 		//  {input: , want: },
 		//}
 	}

@@ -41,6 +41,8 @@ func init() {
 func main() {
 	fmt.Println(conv.KelvinToCelsius(20))
 	fmt.Println(funfacts.GetFunFacts("sun"))
+	fmt.Println(funfacts.GetFunFacts("luna"))
+	fmt.Println(funfacts.GetFunFacts("terra"))
 	flag.Parse()
 
 	/*
