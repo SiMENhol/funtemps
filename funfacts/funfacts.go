@@ -16,11 +16,23 @@ package funfacts
 	}
 */
 func GetFunFacts(about string) []string {
+	//	funfacts := []FunFacts{
+	//		FunFacts{
+	//			Sun: []string{"sol"},
+	//		},
+	//	}
+	//	return (funfacts.FunFacts).Sun
+	var funfact FunFacts
+	funfact.Sun = []string{"sol"}
+	return funfact.Sun
 
-}
+	if about == "sun" {
+		return funfact.Sun
+	}
 
-type FunFacts struct {
-	Sun   []string
-	Luna  []string
-	Terra []string
+	type FunFacts struct {
+		Sun   []string
+		Luna  []string
+		Terra []string
+	}
 }
