@@ -19,7 +19,7 @@ var temp float64
 // er initialisert.
 func init() {
 	/*
-	   Her er eksempler på hvordan man implementerer parsing av flagg.
+	   Her er eksempler på hvordan 	man implementerer parsing av flagg.
 	   For eksempel, kommando
 	       funtemps -F 0 -out C
 	   skal returnere output: 0°F er -17.78°C
@@ -80,9 +80,18 @@ func main() {
 	if out == "C" && isFlagPassed("F") {
 		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
 		// skal returnere °C
-		fmt.Println("0°F er -17.78°C")
+		fmt.Printf("%gF er %gC", fahr, conv.FarhenheitToCelsius(fahr)) //, addSpaceSeperator(strconv.FormatFloat(fahr, 2, 64)))
+	} else if out == "K" && isFlagPassed("F") {
+		fmt.Printf("%gF er %gK", fahr, conv.FarhenheitToKelvin(fahr))
+	} else if out == "F" && isFlagPassed("C") {
+		fmt.Printf("%gC er %gF", cels, conv.CelsiusToFahrenheit(cels))
+	} else if out == "K" && isFlagPassed("C") {
+		fmt.Printf("%gC er %gK", cels, conv.CelsiusToKelvin(cels))
+	} else if out == "C" && isFlagPassed("K") {
+		fmt.Printf("%gK er %gC", kelv, conv.KelvinToCelsius(kelv))
+	} else if out == "F" && isFlagPassed("K") {
+		fmt.Printf("%gK er %gF", kelv, conv.KelvinToFarhenheit(kelv))
 	}
-
 }
 
 // Funksjonen sjekker om flagget er spesifisert på kommandolinje
