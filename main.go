@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"funtemps/conv"
-	"funtemps/funfacts"
 )
 
 // Definerer flag-variablene i hoved-"scope"
@@ -32,17 +31,16 @@ func init() {
 	flag.Float64Var(&kelv, "K", 0.0, "temperatur i kelvin")
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - farhenheit, K- Kelvin")
 	flag.StringVar(&funfact, "funfacts", "sun", "\"fun-facts\" om sun - Solen, luna - Månen og terra - Jorden")
-	// Du må selv definere flag-variabelen for -t flagget, som bestemmer
 	// hvilken temperaturskala skal brukes når funfacts skal vises
 	flag.Float64Var(&temp, "Temperatur", 0.0, "Temperatur ute")
 
 }
 
 func main() {
-	fmt.Println(conv.KelvinToCelsius(20))
-	fmt.Println(funfacts.GetFunFacts("sun"))
-	fmt.Println(funfacts.GetFunFacts("luna"))
-	fmt.Println(funfacts.GetFunFacts("terra"))
+	//fmt.Println(conv.KelvinToCelsius(20))
+	//fmt.Println(funfacts.GetFunFacts("sun"))
+	//fmt.Println(funfacts.GetFunFacts("luna"))
+	//fmt.Println(funfacts.GetFunFacts("terra"))
 	flag.Parse()
 
 	/*
@@ -61,11 +59,7 @@ func main() {
 		    -F, -C, -K kan ikke brukes samtidig
 		    disse tre kan brukes med -out, men ikke med -funfacts
 		    -funfacts kan brukes kun med -t
-		    ...
-		    Jobb deg gjennom alle tilfellene. Vær obs på at det er en del sjekk
-		    implementert i flag-pakken og at den vil skrive ut "Usage" med
-		    beskrivelsene av flagg-variablene, som angitt i parameter fire til
-		    funksjonene Float64Var og StringVar
+
 	*/
 
 	// Her er noen eksempler du kan bruke i den manuelle testingen
@@ -95,7 +89,6 @@ func main() {
 }
 
 // Funksjonen sjekker om flagget er spesifisert på kommandolinje
-// Du trenger ikke å bruke den, men den kan hjelpe med logikken
 func isFlagPassed(name string) bool {
 	found := false
 	flag.Visit(func(f *flag.Flag) {
