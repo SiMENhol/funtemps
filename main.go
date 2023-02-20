@@ -18,16 +18,9 @@ var temp float64
 // Bruker init (som anbefalt i dokumentasjonen) for å sikre at flagvariablene
 // er initialisert.
 func init() {
-	/*
-	   Her er eksempler på hvordan 	man implementerer parsing av flagg.
-	   For eksempel, kommando
-	       funtemps -F 0 -out C
-	   skal returnere output: 0°F er -17.78°C
-	*/
 
 	// Definerer og initialiserer flagg-variablene
 	flag.Float64Var(&fahr, "F", 0.0, "temperatur i grader fahrenheit")
-	// Du må selv definere flag-variablene for "C" og "K"
 	flag.Float64Var(&cels, "C", 0.0, "temperatur i grader celsius")
 	flag.Float64Var(&kelv, "K", 0.0, "temperatur i kelvin")
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - farhenheit, K- Kelvin")
@@ -38,44 +31,25 @@ func init() {
 }
 
 func main() {
-	//fmt.Println(conv.KelvinToCelsius(20))
-	//fmt.Println(funfacts.GetFunFacts("sun"))
-	//fmt.Println(funfacts.GetFunFacts("luna"))
-	//fmt.Println(funfacts.GetFunFacts("terra"))
+	/*
+		fmt.Println(conv.KelvinToCelsius(20))
+		fmt.Println(funfacts.GetFunFacts("sun"))
+		fmt.Println(funfacts.GetFunFacts("luna"))
+		fmt.Println(funfacts.GetFunFacts("terra"))
+	*/
 	flag.Parse()
 
-	/*
-		    Her må logikken for flaggene og kall til funksjoner fra conv og funfacts
-		    pakkene implementeres.
-
-		    Det er anbefalt å sette opp en tabell med alle mulige kombinasjoner
-		    av flagg. flag-pakken har funksjoner som man kan bruke for å teste
-		    hvor mange flagg og argumenter er spesifisert på kommandolinje.
-
-		        fmt.Println("len(flag.Args())", len(flag.Args()))
-				    fmt.Println("flag.NFlag()", flag.NFlag())
-
-		    Enkelte kombinasjoner skal ikke være gyldige og da må kontrollstrukturer
-		    brukes for å utelukke ugyldige kombinasjoner:
-		    -F, -C, -K kan ikke brukes samtidig
-		    disse tre kan brukes med -out, men ikke med -funfacts
-		    -funfacts kan brukes kun med -t
-
-	*/
-
 	// Her er noen eksempler du kan bruke i den manuelle testingen
-	fmt.Println(fahr, cels, kelv, out, funfact, temp)
+	fmt.Println(fahr, cels, kelv, out, funfact, temp) //Printer ut forskjellige verdier
 
 	fmt.Println("len(flag.Args())", len(flag.Args()))
 	fmt.Println("flag.NFlag()", flag.NFlag())
 
 	fmt.Println(isFlagPassed("out"))
 
-	// Eksempel på enkel logikk
+	// Konvertere temperaturene
 	if out == "C" && isFlagPassed("F") {
-		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
-		// skal returnere °C
-		fmt.Printf("%.f Fahrenheit is %s Celsius\n", fahr, trimDecimal(conv.FarhenheitToCelsius(fahr))) //, addSpaceSeperator(strconv.FormatFloat(fahr, 2, 64)))
+		fmt.Printf("%.f Fahrenheit er %s Celsius\n", fahr, trimDecimal(conv.FarhenheitToCelsius(fahr))) //, addSpaceSeperator(strconv.FormatFloat(fahr, 2, 64)))
 	} else if out == "K" && isFlagPassed("F") {
 		fmt.Printf("%.f Fahrenheit er %s Kelvin \n", fahr, trimDecimal(conv.FarhenheitToKelvin(fahr)))
 	} else if out == "F" && isFlagPassed("C") {
@@ -88,8 +62,9 @@ func main() {
 		fmt.Printf("%.f Kelvin er %s Fahrenheit \n", kelv, trimDecimal(conv.KelvinToFarhenheit(kelv)))
 	}
 
-	//Funksjone for å fjerne desimal hvis det er .00
 }
+
+// Funksjone for å fjerne desimal hvis det er .00
 func trimDecimal(value float64) string {
 	str := fmt.Sprintf("%.2f", value)
 	return strings.TrimRight(strings.TrimRight(str, "0"), ".")

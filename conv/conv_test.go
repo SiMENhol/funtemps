@@ -5,16 +5,6 @@ import (
 	"testing"
 )
 
-/*
-*
-
-	Mal for testfunksjoner
-	Du skal skrive alle funksjonene basert på denne malen
-	For alle konverteringsfunksjonene (tilsammen 6)
-	kan du bruke malen som den er (du må selvsagt endre
-	funksjonsnavn og testverdier)
-*/
-
 // Konverterer Farhenheit til Celsius
 func TestFarhenheitToCelsius(t *testing.T) {
 	type test struct {
@@ -128,6 +118,3 @@ func TestCelsiusToKelvin(t *testing.T) { //Kelvin = Celsius + 273.15
 		}
 	}
 }
-
-// De andre testfunksjonene implementeres her
-// ...

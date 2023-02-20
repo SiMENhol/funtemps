@@ -6,11 +6,9 @@ import (
 )
 
 /*
-*
-
-	Mal for TestGetFunFacts funksjonen.
-	Definer korrekte typer for input og want,
-	og sette korrekte testverdier i slice tests.
+Mal for TestGetFunFacts funksjonen.
+Definer korrekte typer for input og want,
+og sette korrekte testverdier i slice tests.
 */
 func TestGetFunFacts(t *testing.T) {
 	type test struct {

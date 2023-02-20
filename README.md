@@ -1,1 +1,2 @@
 # funtemps
+Installasjon og Testing

@@ -16,12 +16,13 @@ package funfacts
 	}
 */
 func GetFunFacts(about string) []string {
-	//	funfacts := []FunFacts{
-	//		FunFacts{
-	//			Sun: []string{"sol"},
-	//		},
-	//	}
-	//	return (funfacts.FunFacts).Sun
+	/* 	funfacts := []FunFacts{
+		FunFacts{
+		Sun: []string{"sol"},
+		},
+	}
+	return (funfacts.FunFacts).Sun
+	*/
 	var funfact FunFacts
 	funfact.Sun = []string{"Temperatur i Solens kjerne Temperatur på ytre lag av Solen "}
 	funfact.Luna = []string{"Temperatur på Månens overflate om natten Temperatur på Månens overflate om dagen"}
