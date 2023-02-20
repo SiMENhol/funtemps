@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"funtemps/conv"
+	"strings"
 )
 
 // Definerer flag-variablene i hoved-"scope"
@@ -74,18 +75,24 @@ func main() {
 	if out == "C" && isFlagPassed("F") {
 		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
 		// skal returnere °C
-		fmt.Printf("%gF er %gC", fahr, conv.FarhenheitToCelsius(fahr)) //, addSpaceSeperator(strconv.FormatFloat(fahr, 2, 64)))
+		fmt.Printf("%.f Fahrenheit is %s Celsius\n", fahr, trimDecimal(conv.FarhenheitToCelsius(fahr))) //, addSpaceSeperator(strconv.FormatFloat(fahr, 2, 64)))
 	} else if out == "K" && isFlagPassed("F") {
-		fmt.Printf("%gF er %gK", fahr, conv.FarhenheitToKelvin(fahr))
+		fmt.Printf("%.f Fahrenheit er %s Kelvin \n", fahr, trimDecimal(conv.FarhenheitToKelvin(fahr)))
 	} else if out == "F" && isFlagPassed("C") {
-		fmt.Printf("%gC er %gF", cels, conv.CelsiusToFahrenheit(cels))
+		fmt.Printf("%.f Celsius er %s Fahrenheit \n", cels, trimDecimal(conv.CelsiusToFahrenheit(cels)))
 	} else if out == "K" && isFlagPassed("C") {
-		fmt.Printf("%gC er %gK", cels, conv.CelsiusToKelvin(cels))
+		fmt.Printf("%.f Celsius er %s Kelvin \n", cels, trimDecimal(conv.CelsiusToKelvin(cels)))
 	} else if out == "C" && isFlagPassed("K") {
-		fmt.Printf("%gK er %gC", kelv, conv.KelvinToCelsius(kelv))
+		fmt.Printf("%.f Kelvin er %s Celsius \n", kelv, trimDecimal(conv.KelvinToCelsius(kelv)))
 	} else if out == "F" && isFlagPassed("K") {
-		fmt.Printf("%gK er %gF", kelv, conv.KelvinToFarhenheit(kelv))
+		fmt.Printf("%.f Kelvin er %s Fahrenheit \n", kelv, trimDecimal(conv.KelvinToFarhenheit(kelv)))
 	}
+
+	//Funksjone for å fjerne desimal hvis det er .00
+}
+func trimDecimal(value float64) string {
+	str := fmt.Sprintf("%.2f", value)
+	return strings.TrimRight(strings.TrimRight(str, "0"), ".")
 }
 
 // Funksjonen sjekker om flagget er spesifisert på kommandolinje

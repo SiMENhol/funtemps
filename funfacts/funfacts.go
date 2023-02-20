@@ -23,9 +23,9 @@ func GetFunFacts(about string) []string {
 	//	}
 	//	return (funfacts.FunFacts).Sun
 	var funfact FunFacts
-	funfact.Sun = []string{"sol"}
-	funfact.Luna = []string{"månen"}
-	funfact.Terra = []string{"jorda"}
+	funfact.Sun = []string{"Temperatur i Solens kjerne Temperatur på ytre lag av Solen "}
+	funfact.Luna = []string{"Temperatur på Månens overflate om natten Temperatur på Månens overflate om dagen"}
+	funfact.Terra = []string{"Høyeste temperatur målt på Jordens overflate Laveste temperatur målt på Jordens overflate Temperatur i Jordens indre kjerne"}
 
 	if about == "sun" {
 		return funfact.Sun
