@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"funtemps/conv"
+	"github.com/SiMENhol/funtemps/conv"
 	"strings"
 )
 
